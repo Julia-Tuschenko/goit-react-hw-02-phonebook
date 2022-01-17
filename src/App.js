@@ -1,25 +1,31 @@
-import logo from "./logo.svg";
-import "./App.css";
+// import logo from "./logo.svg";
+// import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+
+class App extends React.Component {
+  state = {
+    contacts: [],
+    name: '',
+  };
+
+  handelImputChange = event => {
+    // console.log(event.currentTarget.name);
+    this.setState({ name: event.currentTarget.value });
+  };
+
+  render() {
+    return (
+      <input
+        type="text"
+        name={this.state.name}
+        onChange={this.handelImputChange}
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+      />
+    );
+  }
 }
 
 export default App;
