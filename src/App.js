@@ -9,10 +9,14 @@ class App extends React.Component {
     contacts: [],
   };
 
+  formSubmitHandler = data => {
+    console.log(data);
+  };
+
   render() {
     return (
       <div>
-        <Form />
+        <Form onSubmit={this.formSubmitHandler} />
       </div>
     );
   }
