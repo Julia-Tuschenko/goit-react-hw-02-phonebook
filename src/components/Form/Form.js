@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 
 class Form extends Component {
-  state = {};
+  state = {
+    name: '',
+    number: '',
+  };
 
   handelChange = event => {
     const { name, value } = event.currentTarget;
@@ -26,7 +29,7 @@ class Form extends Component {
   render() {
     return (
       <form onSubmit={this.handelSubmit}>
-        <label>
+        <label htmlFor={this.nameId}>
           Name
           <input
             type="text"
@@ -40,7 +43,7 @@ class Form extends Component {
           />
         </label>
         <button type="submit">Add contact</button>
-        {/* <label>
+        <label htmlFor={this.numberId}>
           Number
           <input
             type="tel"
@@ -52,7 +55,7 @@ class Form extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label> */}
+        </label>
       </form>
     );
   }
