@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
+import { Forma, LabelPhone, InputPhone, AddContact } from './Form.styled';
 
 class Form extends Component {
   state = {
@@ -23,42 +25,47 @@ class Form extends Component {
     this.setState({ name: '', number: '' });
   };
 
-  nameId = nanoid();
-  numberId = nanoid();
+  // nameId = nanoid();
+  // numberId = nanoid();
 
   render() {
     return (
-      <form onSubmit={this.handelSubmit}>
-        <label htmlFor={this.nameId}>
+      <Forma onSubmit={this.handelSubmit}>
+        <LabelPhone htmlFor={this.nameId}>
           Name
-          <input
+          <InputPhone
             type="text"
             value={this.state.name}
             name="name"
-            id={this.nameId}
+            // id={this.nameId}
             onChange={this.handelChange}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <button type="submit">Add contact</button>
-        <label htmlFor={this.numberId}>
+        </LabelPhone>
+
+        <LabelPhone htmlFor={this.numberId}>
           Number
-          <input
+          <InputPhone
             type="tel"
             value={this.state.number}
             name="number"
-            id={this.numberId}
+            // id={this.numberId}
             onChange={this.handelChange}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
-      </form>
+        </LabelPhone>
+        <AddContact type="submit">Add contact</AddContact>
+      </Forma>
     );
   }
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Form;
