@@ -20,7 +20,7 @@ export const InputPhone = styled.input`
 export const AddContact = styled.button`
   padding: 2px 10px;
   margin-top: 20px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   background: #f5f5fa;
   box-shadow: -10px -10px 20px #ffffff, 10px 10px 20px rgba(72, 121, 150, 0.1),
