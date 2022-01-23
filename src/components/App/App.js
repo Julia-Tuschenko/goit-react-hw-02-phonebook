@@ -24,7 +24,11 @@ class App extends React.Component {
     };
 
     this.setState(({ contacts }) => {
-      if (contacts.some(contact => contact.name === name)) {
+      if (
+        contacts.some(
+          contact => contact.name.toLowerCase() === name.toLowerCase(),
+        )
+      ) {
         return alert(`${name} is already in contacts!`);
       }
       return {
@@ -45,16 +49,12 @@ class App extends React.Component {
 
   getContact = () => {
     const { contacts, filter } = this.state;
-    const normalizedFilter = filter.toLowerCase();
+    const normalizedFilter = filter.trim().toLowerCase();
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
-
-  // formSubmitHandler = data => {
-  //   console.log(data);
-  // };
 
   render() {
     const getContacts = this.getContact();
