@@ -26,7 +26,8 @@ class App extends React.Component {
     this.setState(({ contacts }) => {
       if (
         contacts.some(
-          contact => contact.name.toLowerCase() === name.toLowerCase(),
+          contact =>
+            contact.name.trim().toUpperCase() === name.trim().toUpperCase(),
         )
       ) {
         return alert(`${name} is already in contacts!`);
